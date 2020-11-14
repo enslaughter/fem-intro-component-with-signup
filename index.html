@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+
+  <title>Frontend Mentor | Intro component with sign up form</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    body {
+      color: white;
+      background-color: hsl(0, 100%, 74%);
+      padding: 5%;
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+
+      background-image: url('images/bg-intro-desktop.png');
+    }
+
+    .page-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .page-container>div {
+      flex: 1 1 0px;
+      margin: 10px;
+    }
+
+    .info-box {
+      padding: 5%;
+    }
+
+    .info-header {
+      font-size: 5vh;
+      font-weight: 700;
+    }
+
+    .signup-box {
+      text-align: center;
+    }
+
+    .signup-header {
+      background-color: hsl(248, 32%, 49%);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 7px 0 0 rgba(0, 0, 0, 0.15);
+      font-weight: 300;
+    }
+
+    form {
+      background-color: white;
+      color: hsl(249, 10%, 26%);
+      padding: 5%;
+      border-radius: 10px;
+      box-shadow: 0 8px 0 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .input-field {
+      padding-bottom: 10px;
+    }
+
+    input {
+      width: 100%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 600;
+      padding: 15px 25px;
+      box-sizing: border-box;
+      background: url('images/icon-error.svg') no-repeat right 25px center;
+      background-image: none;
+
+      border: 1px solid hsl(246, 25%, 77%);
+      border-radius: 5px;
+    }
+
+    input[type=text]:focus,
+    input[type=password]:focus {
+      outline-width: 0px;
+      border: 1px solid black;
+    }
+
+    .input-error {
+      border: 2px solid hsl(0, 100%, 74%);
+      background-image: url('images/icon-error.svg');
+    }
+
+    #submit-button {
+      background-color: hsl(154, 59%, 51%);
+      color: white;
+      width: 100%;
+      font-family: "Poppins", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      text-transform: uppercase;
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      outline-width: 0px;
+      box-shadow: 0 4px 0 0 hsl(154, 59%, 46%);
+    }
+
+    #submit-button:hover {
+      cursor: pointer;
+      background-color: hsl(154, 59%, 66%);
+    }
+
+    .error-message {
+      font-style: italic;
+      font-size: 10px;
+      font-weight: 600;
+      padding-top: 0.5em;
+      margin-top: 0;
+      color: hsl(0, 100%, 74%);
+      text-align: right;
+
+      display: none;
+    }
+
+    .active-error {
+      display: block;
+    }
+
+    .signup-footer {
+      font-size: 10px;
+      font-weight: 500;
+      color: hsl(246, 25%, 77%);
+      margin-top: 15px;
+    }
+
+    .tos-span {
+      color: hsl(0, 100%, 74%);
+      font-weight: 700;
+    }
+
+    .tos-span:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    @media all and (max-width: 480px) {
+      body {
+        background-image: url('images/bg-intro-mobile.png');
+        padding: 5% 1%;
+      }
+
+      .page-container {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-container">
+
+    <div class="info-box">
+
+      <p class="info-header">Learn to code by watching others</p>
+
+      <p class="info-body">See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
+        but understanding how developers think is invaluable. </p>
+
+    </div>
+
+    <div class="signup-box">
+
+      <p class="signup-header"><span style="font-weight: 600;">Try it free 7 days</span> then $20/mo. thereafter</p>
+
+      <form id="form" action="/" method="GET">
+        <div class="input-field" id="firstname-field">
+          <input id="firstname" class="" name="firstname" type="text" placeholder="First Name">
+          <p class="error-message" id="firstname-error">First Name cannot be empty</p>
+        </div>
+
+        <div class="input-field" id="lastname-field">
+          <input id="lastname" class="" name="lastname" type="text" placeholder="Last Name">
+          <p class="error-message" id="lastname-error">Last Name cannot be empty</p>
+        </div>
+
+        <div class="input-field" id="email-field">
+          <input id="email" class="" name="email" type="text" placeholder="Email Address">
+          <p class="error-message" id="email-error">Looks like this is not an email</p>
+        </div>
+
+        <div class="input-field" id="password-field">
+          <input id="password" class="" name="password" type="password" placeholder="Password">
+          <p class="error-message" id="password-error">Password cannot be empty</p>
+        </div>
+
+        <button id="submit-button" type="button" onclick="validateInput()"> Claim your free trial </button>
+
+        <p class="signup-footer">By clicking the button, you are agreeing to our <span class="tos-span">Terms and Services</span></p>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <footer>
+    <p class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+      Coded by <a href="#">Eli Slaughter</a>.
+    </p>
+  </footer>
+
+  <script>
+    const form = document.getElementById("form");
+    const firstname = document.getElementById("firstname");
+    const lastname = document.getElementById("lastname");
+    const email = document.getElementById("email");
+    const password = document.getElementById("password");
+
+    const firstnameError = document.getElementById("firstname-error");
+    const lastnameError = document.getElementById("lastname-error");
+    const emailError = document.getElementById("email-error");
+    const passwordError = document.getElementById("password-error");
+
+    var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    function validateInput() {
+      const firstnameValue = firstname.value.trim();
+      const lastnameValue = lastname.value.trim();
+      const emailValue = email.value.trim();
+      const passwordValue = password.value.trim();
+
+      var validFN = true;
+      var validLN = true;
+      var validEM = true;
+      var validPW = true;
+
+      if (firstnameValue === '') {
+        firstname.className = "input-error"
+        firstnameError.className = "error-message active-error";
+        validFN = false;
+      }
+
+      if (lastnameValue === '') {
+        lastname.className = "input-error"
+        lastnameError.className = "error-message active-error";
+        validLN = false;
+      }
+
+      if (!emailValue.match(mailformat)) {
+        email.className = "input-error"
+        emailError.className = "error-message active-error";
+        validEM = false;
+      }
+
+      if (passwordValue === '') {
+        password.className = "input-error"
+        passwordError.className = "error-message active-error";
+        validPW = false;
+      } else {
+        if (validFN) {
+          firstname.className = ""
+          firstnameError.className = "error-message";
+        }
+
+        if (validLN) {
+          lastname.className = ""
+          lastnameError.className = "error-message";
+        }
+
+        if (validEM) {
+          email.className = ""
+          emailError.className = "error-message";
+        }
+
+        if (validPW) {
+          password.className = ""
+          passwordError.className = "error-message";
+        }
+
+        if (validFN && validLN && validEM && validPW) {
+          alert("Validation Successful!")
+        }
+      }
+
+    }
+  </script>
+</body>
+
+</html>
